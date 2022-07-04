@@ -5,7 +5,7 @@ SDK for use with ReferList.
 ## Usage
 
 ```ts
-import { saveAddress } from '@referlist/sdk';
+import { saveAddress } from '@referlistxyz/sdk';
 
 // set the slug for your project
 // use the connected user's address
