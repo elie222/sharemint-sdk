@@ -1,5 +1,5 @@
 {
-  "name": "@referlist/sdk",
+  "name": "@referlistxyz/sdk",
   "version": "0.0.1",
   "description": "Save an referral to ReferList.",
   "main": "lib/index.js",
