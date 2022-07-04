@@ -1,3 +1,7 @@
+import debug from "debug";
+const log = debug("referlist");
+const logError = debug("referlist:error");
+
 function getInvitedById() {
   let invitedById = "";
   location.search
@@ -21,7 +25,7 @@ export async function saveAddress(options: {
   try {
     const invitedById = getInvitedById();
     if (!invitedById) return;
-    console.log(`Saving address: ${address}`);
+    log(`Saving address: ${address}`);
 
     const url = referUrl || `https://referlist.xyz/api/user/save-address`;
 
@@ -31,9 +35,9 @@ export async function saveAddress(options: {
       body: JSON.stringify({ address, slug, invitedById }),
     });
 
-    console.log(`Saved address: ${address}`);
+    log(`Saved address: ${address}`);
   } catch (error) {
-    console.error(`Error saving address`);
-    console.error(error);
+    logError(`Error saving address`);
+    logError(error);
   }
 }
