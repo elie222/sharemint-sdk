@@ -1,9 +1,18 @@
 {
-  "name": "@referlistxyz/sdk",
-  "version": "0.0.1",
-  "description": "Save an referral to ReferList.",
+  "name": "@sharemint/sdk",
+  "version": "0.1.0",
+  "description": "Save referrals to ShareMint.xyz.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "homepage": "https://github.com/elie222/sharemint-sdk",
+  "url" : "https://github.com/elie222/sharemint-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elie222/sharemint-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elie222/sharemint-sdk/issues"
+  },
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",

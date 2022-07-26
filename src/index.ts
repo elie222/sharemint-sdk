@@ -1,6 +1,8 @@
 import debug from "debug";
-const log = debug("referlist");
-const logError = debug("referlist:error");
+const log = debug("sharemint");
+const logError = debug("sharemint:error");
+
+const DEFAULT_BASE_URI = "https://sharemint.xyz";
 
 function getInvitedById() {
   let invitedById = "";
@@ -17,27 +19,28 @@ function getInvitedById() {
 
 export async function saveAddress(options: {
   slug: string;
-  address: string;
+  address?: string;
+  email?: string;
   referUrl?: string;
 }) {
-  const { slug, address, referUrl } = options;
+  const { slug, address, email, referUrl } = options;
 
   try {
     const invitedById = getInvitedById();
     if (!invitedById) return;
-    log(`Saving address: ${address}`);
+    log(`Saving address: ${address || email}`);
 
-    const url = referUrl || `https://referlist.xyz/api/user/save-address`;
+    const url = referUrl || `${DEFAULT_BASE_URI}/api/external/save`;
 
     await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ address, slug, invitedById }),
+      body: JSON.stringify({ address, email, slug, invitedById }),
     });
 
-    log(`Saved address: ${address}`);
+    log(`Saved address: ${address || email}`);
   } catch (error) {
-    logError(`Error saving address`);
+    logError(`Error saving user`);
     logError(error);
   }
 }
