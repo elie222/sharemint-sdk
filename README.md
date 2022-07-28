@@ -15,23 +15,21 @@ saveAddress({ slug: "my-project-slug", address: "0x123abcd...efg" });
 saveAddress({ slug: "my-project-slug", email: "hello@example.com" });
 ```
 
-Then when a user visits your site with `?r=<REFERRER_ID>` in the url we'll store the referral to `REFERRER_ID`.
+Then when a user visits your site with `?r=<REFERRER_ID>` in the url we'll store the referral to `REFERRER_ID`. A sample url would be `https://mint.boredexamples.com/?r=<REFERRER_ID>`. The package will automatically fetch referrer id from the url so you don't have to.
 
 ## Usage without package
 
-Send a POST request to:
+An alternative method to use the ShareMint API is to send a POST request directly to:
 
 `https://sharemint.xyz/api/external/save`
 
-With the following details:
-
-Headers:
+The request expects the following headers:
 
 ```
 { "Content-Type": "application/json" }
 ```
 
-Body:
+And the body should include:
 
 ```
 address?: string
@@ -41,3 +39,15 @@ invitedById: string
 ```
 
 One of `address` or `email` is required. Typical usage is to send only the address.
+
+An example body is:
+
+```json
+{
+  "address": "0x1234567",
+  "slug": "my-project-slug",
+  "invitedById": "referral-code-123"
+}
+```
+
+`invitedById` should be fetched from the url. Affiliates will refer users to your site with their id in the query params. A sample url is: `https://mysite.com/?r=<REFERRER_ID>`. `REFERRER_ID` should be used for `invitedById` in the API call.
