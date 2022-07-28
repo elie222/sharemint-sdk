@@ -3,6 +3,7 @@ const log = debug("sharemint");
 const logError = debug("sharemint:error");
 
 const DEFAULT_BASE_URI = "https://sharemint.xyz";
+const QUERY_PARAM = "r";
 
 function getInvitedById() {
   let invitedById = "";
@@ -11,7 +12,7 @@ function getInvitedById() {
     .split("&")
     .forEach((item) => {
       const split = item.split("=");
-      if (split[0] === "r") invitedById = split[1];
+      if (split[0] === QUERY_PARAM) invitedById = split[1];
     });
 
   return invitedById;
