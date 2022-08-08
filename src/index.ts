@@ -48,7 +48,7 @@ export async function saveAddress(options: {
 
 export async function logVisit(options: { referUrl?: string }) {
   const { referUrl } = options;
-  const url = referUrl || `${DEFAULT_BASE_URI}/api/external/save`;
+  const url = referUrl || `${DEFAULT_BASE_URI}/api/external/visit`;
 
   const invitedById = getInvitedById();
   if (!invitedById) return;
