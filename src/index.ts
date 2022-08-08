@@ -45,3 +45,17 @@ export async function saveAddress(options: {
     logError(error);
   }
 }
+
+export async function logVisit(options: { referUrl?: string }) {
+  const { referUrl } = options;
+  const url = referUrl || `${DEFAULT_BASE_URI}/api/external/save`;
+
+  const invitedById = getInvitedById();
+  if (!invitedById) return;
+
+  await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code: invitedById }),
+  });
+}

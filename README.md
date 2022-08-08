@@ -17,6 +17,16 @@ saveAddress({ slug: "my-project-slug", email: "hello@example.com" });
 
 Then when a user visits your site with `?r=<REFERRER_ID>` in the url we'll store the referral to `REFERRER_ID`. A sample url would be `https://mint.boredexamples.com/?r=<REFERRER_ID>`. The package will automatically fetch referrer id from the url so you don't have to.
 
+### Track visits
+
+Use the following code to track visits:
+
+```ts
+import { logVisit } from "@sharemint/sdk";
+
+logVisit();
+```
+
 ## Usage without package
 
 An alternative method to use the ShareMint API is to send a POST request directly to:
