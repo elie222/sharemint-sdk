@@ -18,12 +18,21 @@ function getInvitedById() {
   return invitedById;
 }
 
-export async function saveAddress(options: {
-  slug: string;
-  address?: string;
-  email?: string;
-  referUrl?: string;
-}) {
+export async function saveAddress(
+  options: {
+    slug: string;
+    referUrl?: string;
+  } & (
+    | {
+        address: string;
+        email?: string;
+      }
+    | {
+        address?: string;
+        email: string;
+      }
+  )
+) {
   const { slug, address, email, referUrl } = options;
 
   try {
