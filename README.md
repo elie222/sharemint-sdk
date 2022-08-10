@@ -13,6 +13,9 @@ saveAddress({ slug: "my-project-slug", address: "0x123abcd...efg" });
 
 // alternatively, if you don't have the address, but only an email, you can provide that instead:
 saveAddress({ slug: "my-project-slug", email: "hello@example.com" });
+
+// the last approach is where you only have the mint transaction:
+saveAddress({ slug: "my-project-slug", transactionHash: "0xabc123456789" });
 ```
 
 Then when a user visits your site with `?r=<REFERRER_ID>` in the url we'll store the referral to `REFERRER_ID`. A sample url would be `https://mint.boredexamples.com/?r=<REFERRER_ID>`. The package will automatically fetch referrer id from the url so you don't have to.
@@ -44,6 +47,7 @@ And the body should include:
 ```
 address?: string
 email?: string
+transactionHash?: string
 slug: string
 invitedById: string
 ```

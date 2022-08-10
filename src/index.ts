@@ -26,14 +26,21 @@ export async function saveAddress(
     | {
         address: string;
         email?: string;
+        transactionHash?: string;
       }
     | {
         address?: string;
         email: string;
+        transactionHash?: string;
+      }
+    | {
+        address?: string;
+        email?: string;
+        transactionHash: string;
       }
   )
 ) {
-  const { slug, address, email, referUrl } = options;
+  const { slug, address, email, transactionHash, referUrl } = options;
 
   try {
     const invitedById = getInvitedById();
@@ -45,7 +52,13 @@ export async function saveAddress(
     await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ address, email, slug, invitedById }),
+      body: JSON.stringify({
+        address,
+        email,
+        transactionHash,
+        slug,
+        invitedById,
+      }),
     });
 
     log(`Saved address: ${address || email}`);
