@@ -27,7 +27,7 @@ Use the following code to track visits:
 ```ts
 import { logVisit } from "@sharemint/sdk";
 
-logVisit();
+logVisit({ slug: "my-project-slug" });
 ```
 
 ## Usage without package

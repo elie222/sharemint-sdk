@@ -68,8 +68,9 @@ export async function saveAddress(
   }
 }
 
-export async function logVisit(options?: { referUrl?: string }) {
-  const url = options?.referUrl || `${DEFAULT_BASE_URI}/api/external/visit`;
+export async function logVisit(options: { slug: string; referUrl?: string }) {
+  const { slug, referUrl } = options;
+  const url = referUrl || `${DEFAULT_BASE_URI}/api/external/visit`;
 
   const invitedById = getInvitedById();
   if (!invitedById) return;
@@ -77,6 +78,6 @@ export async function logVisit(options?: { referUrl?: string }) {
   await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ code: invitedById }),
+    body: JSON.stringify({ slug, code: invitedById }),
   });
 }
