@@ -4,7 +4,7 @@
   "description": "Save referrals to ShareMint.xyz.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://sharemint.xyz",
+  "homepage": "https://github.com/elie222/sharemint-sdk#readme",
   "repository": {
     "type": "git",
     "url": "git@github.com:elie222/sharemint-sdk.git"

@@ -1,6 +1,6 @@
 # README
 
-SDK for use with ShareMint.xyz.
+SDK for use with [ShareMint.xyz](https://sharemint.xyz).
 
 ## Usage
 
