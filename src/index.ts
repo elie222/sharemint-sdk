@@ -81,3 +81,16 @@ export async function logVisit(options: { slug: string; referUrl?: string }) {
     body: JSON.stringify({ slug, code: invitedById }),
   });
 }
+
+export async function getOrCreateInviteCode(options: { address: string }) {
+  const { address } = options;
+  const url = `${DEFAULT_BASE_URI}/api/external/get-or-create-invite-code`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ address }),
+  });
+
+  return await res.json();
+}
