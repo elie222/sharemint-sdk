@@ -4,6 +4,7 @@ const logError = debug("sharemint:error");
 
 const DEFAULT_BASE_URI = "https://sharemint.xyz";
 const QUERY_PARAM = "r";
+const LOCAL_STORAGE_KEY = "sharemint:invitedById";
 
 function getInvitedById() {
   let invitedById = "";
@@ -43,7 +44,8 @@ export async function saveAddress(
   const { slug, address, email, transactionHash, referUrl } = options;
 
   try {
-    const invitedById = getInvitedById();
+    const invitedById =
+      localStorage.getItem(LOCAL_STORAGE_KEY) || getInvitedById();
     if (!invitedById) return;
     log(`Saving address: ${address || email}`);
 
@@ -93,4 +95,10 @@ export async function getOrCreateInviteCode(options: { address: string }) {
   });
 
   return await res.json();
+}
+
+export function storeReferrer() {
+  const invitedById = getInvitedById();
+  if (!invitedById) return;
+  localStorage.setItem(LOCAL_STORAGE_KEY, invitedById);
 }

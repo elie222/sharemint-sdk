@@ -15,8 +15,22 @@ Then when a user visits your site with `?r=<REFERRER_ID>` in the url we'll store
 You can also send the transaction hash, and we will store the purchaser. For NFT purchases the user that receives the token will be considered the purchaser. This makes for easy integration with platforms like Winter that allow for fiat payments for NFT purchases.
 
 ```ts
+import { saveAddress } from "@sharemint/sdk";
+
 saveAddress({ slug: "my-project-slug", transactionHash: "0xabc123456789" });
 ```
+
+### Saving the referrer id for later
+
+In some cases a user will visit the page, not connect their wallet, and return later to connect it. Or the user will change pages on your website and the referrer id will be lost. To store the referrer in localStorage as soon as the user visits your website you can do the following in your JavaScript code:
+
+```ts
+import { storeReferrer } from "@sharemint/sdk";
+
+storeReferrer();
+```
+
+Then when calling `saveAddress()` we will use the previously stored referrer. In the case localStorage does not contain a referrer we will use the referral code in the URL (if it exists).
 
 ### Track visits
 
@@ -31,6 +45,8 @@ logVisit({ slug: "my-project-slug" });
 ### Fetch user referral code
 
 ```ts
+import { getOrCreateInviteCode } from "@sharemint/sdk";
+
 const inviteCode = await getOrCreateInviteCode({ address: "0x123abc123" });
 ```
 
