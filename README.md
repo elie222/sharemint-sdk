@@ -32,6 +32,14 @@ storeReferrer();
 
 Then when calling `saveAddress()` we will use the previously stored referrer. In the case localStorage does not contain a referrer we will use the referral code in the URL (if it exists).
 
+If you'd like to clear the referrer that is stored you can call:
+
+```ts
+import { clearReferrer } from "@sharemint/sdk";
+
+clearReferrer();
+```
+
 ### Track visits
 
 Use the following code to track page visits:

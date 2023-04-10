@@ -24,22 +24,22 @@ export async function saveAddress(
     slug: string;
     referUrl?: string;
   } & (
-    | {
+      | {
         address: string;
         email?: string;
         transactionHash?: string;
       }
-    | {
+      | {
         address?: string;
         email: string;
         transactionHash?: string;
       }
-    | {
+      | {
         address?: string;
         email?: string;
         transactionHash: string;
       }
-  )
+    )
 ) {
   const { slug, address, email, transactionHash, referUrl } = options;
 
@@ -101,4 +101,8 @@ export function storeReferrer() {
   const invitedById = getInvitedById();
   if (!invitedById) return;
   localStorage.setItem(LOCAL_STORAGE_KEY, invitedById);
+}
+
+export function clearReferrer() {
+  localStorage.removeItem(LOCAL_STORAGE_KEY);
 }
