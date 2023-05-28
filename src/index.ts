@@ -6,7 +6,7 @@ const DEFAULT_BASE_URI = "https://sharemint.xyz";
 const QUERY_PARAM = "r";
 const LOCAL_STORAGE_KEY = "sharemint:invitedById";
 
-function getInvitedById() {
+export function getInvitedById() {
   let invitedById = "";
   location.search
     .substring(1)
