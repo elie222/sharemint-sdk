@@ -24,22 +24,22 @@ export async function saveAddress(
     slug: string;
     referUrl?: string;
   } & (
-      | {
+    | {
         address: string;
         email?: string;
         transactionHash?: string;
       }
-      | {
+    | {
         address?: string;
         email: string;
         transactionHash?: string;
       }
-      | {
+    | {
         address?: string;
         email?: string;
         transactionHash: string;
       }
-    )
+  )
 ) {
   const { slug, address, email, transactionHash, referUrl } = options;
 
