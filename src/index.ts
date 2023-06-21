@@ -46,7 +46,7 @@ export async function saveAddress(
   try {
     const invitedById =
       getInvitedById() || localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (!localStorage.getItem(LOCAL_STORAGE_KEY)) return;
+    if (!invitedById) return;
     log(`Saving address: ${address || email}`);
 
     const url = referUrl || `${DEFAULT_BASE_URI}/api/external/save`;
