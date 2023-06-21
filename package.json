@@ -1,6 +1,6 @@
 {
   "name": "@sharemint/sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Save referrals to ShareMint.xyz.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
