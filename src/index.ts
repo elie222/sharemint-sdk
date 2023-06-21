@@ -45,7 +45,7 @@ export async function saveAddress(
 
   try {
     const invitedById =
-      localStorage.getItem(LOCAL_STORAGE_KEY) || getInvitedById();
+      getInvitedById() || localStorage.getItem(LOCAL_STORAGE_KEY);
     if (!invitedById) return;
     log(`Saving address: ${address || email}`);
 
