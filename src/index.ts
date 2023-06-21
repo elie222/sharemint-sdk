@@ -23,6 +23,8 @@ export async function saveAddress(
   options: {
     slug: string;
     referUrl?: string;
+    inviteCode?: string;
+    attributionModel?: "first-click" | "last-click";
   } & (
     | {
         address: string;
@@ -41,11 +43,22 @@ export async function saveAddress(
       }
   )
 ) {
-  const { slug, address, email, transactionHash, referUrl } = options;
+  const {
+    slug,
+    address,
+    email,
+    transactionHash,
+    referUrl,
+    inviteCode,
+    attributionModel,
+  } = options;
 
   try {
     const invitedById =
-      localStorage.getItem(LOCAL_STORAGE_KEY) || getInvitedById();
+      inviteCode || attributionModel === "last-click"
+        ? getInvitedById() || localStorage.getItem(LOCAL_STORAGE_KEY)
+        : localStorage.getItem(LOCAL_STORAGE_KEY) || getInvitedById();
+
     if (!invitedById) return;
     log(`Saving address: ${address || email}`);
 
