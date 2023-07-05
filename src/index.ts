@@ -64,7 +64,7 @@ export async function saveAddress(
 
     const url = referUrl || `${DEFAULT_BASE_URI}/api/external/save`;
 
-    await fetch(url, {
+    return await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -90,7 +90,7 @@ export async function logVisit(options: { slug: string; referUrl?: string }) {
   const invitedById = getInvitedById();
   if (!invitedById) return;
 
-  await fetch(url, {
+  return await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ slug, code: invitedById }),
